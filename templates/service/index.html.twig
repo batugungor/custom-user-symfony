@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ServiceController!{% endblock %}
+
+{% block body %}
+    {% for service in company.services %}
+        <a href="{{ path('service_register', {'slug': app.request.attributes.get('slug'), 'service': service.serviceId}) }}">{{ service.serviceName }}</a><br/>
+    {% endfor %}
+{% endblock %}

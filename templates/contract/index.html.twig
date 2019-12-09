@@ -1,0 +1,166 @@
+<head>
+    <style>
+        /** Define the margins of your page **/
+        @page {
+            margin: 170px 25px 80px;
+        }
+
+        header {
+            position: fixed;
+            top: -145px;
+            left: 0px;
+            right: 0px;
+            height: 50px;
+
+            /** Extra personal styles **/
+            line-height: 35px;
+        }
+
+        footer {
+            width: 100%;
+            position: fixed;
+            bottom: -70px;
+            left: -12px;
+            height: 50px;
+            line-height: 35px;
+        }
+
+        .icon {
+            width: auto;
+            height: 100px;
+            position: relative;
+        }
+
+        #page-header {
+            text-align: right;
+            font-size: 25px;
+        }
+
+        .row {
+            margin-bottom: 20px;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .column {
+            float: left;
+            padding: 10px;
+            overflow: hidden;
+        }
+
+        .li-column {
+            float: left;
+            overflow: hidden;
+        }
+
+        .header {
+            padding: 4px;
+            width: 100%;
+            border: 1px black solid;
+            margin-bottom: 20px;
+        }
+
+        .block-text {
+            margin-left: 5%;
+            width: 95%;
+        }
+
+        .block-text-li {
+            margin-left: 8%;
+            width: 92%;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        .block-ul {
+            padding-left: 0;
+        }
+
+        .li-text {
+            width: 18%;
+        }
+
+        .li-text-content {
+            width: 73%;
+            margin-left: 2%;
+        }
+
+        .close-ul .row {
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+    </style>
+</head>
+<body>
+<header class="row" style="width: 90%; margin-left: 5%; margin-right: auto;">
+    <div class="column" style="width: 20%;">
+        <img height="100" width="100" class="icon" src="{{ company.companyLogo }}">
+    </div>
+
+    <div class="column" style="width: 60%; text-align: center;">
+        <strong style="font-size: 30px; margin-bottom: 0">{{ company.companyName|capitalize }}</strong>
+        <p style="width: 100%; text-align: center; margin-top: -10px; font-size: 14px"><span
+                    style="width: 45%;">{{ company.companyWebsite }}</span> <span
+                    style="width: 45%; margin-left: 10%">{{ company.companyEmail }}</span></p>
+    </div>
+
+    <div class="column" style="margin-left: 40%">
+        <div class="row" style="width: 100%">
+            <p class="column" style="width: 20%; text-align: center">{{ company.companyWebsite }}</p>
+            <p class="column" style="width: 50%; text-align: center">{{ company.companyEmail }}</p>
+        </div>
+    </div>
+
+
+    <!--<div class="column" style="width: 70.5%;" id="page-header">
+        <p>{{ company.services[0].serviceName }} <br/> Contractnummer {{ contract.contractOrdernr }}</p>
+    </div>-->
+</header>
+
+<footer>
+    <div style="position:absolute; bottom: 270px; left: 100px">
+        <div class="row">
+            <div class="column" style="width: 30%;">
+                <div>
+                    {{ app.request.request.get('apply')['firstname'] }} {{ app.request.request.get('apply')['lastname'] }}<br/>
+                    Naam Leerling
+                </div>
+                <br/>
+                <div>
+                    <img style="height: 100px; width: 100px;"
+                          src="{{ app.request.request.get('apply_signature-0') }}"><br/>
+                    Handtekening
+                </div>
+            </div>
+            <div class="column" style="width: 30%; margin-left: 4.5%">
+                <div>{{ app.request.request.get('apply')['first_lastname_parent'] }}<br/>
+                    Naam Ouder / Voogd
+                </div>
+                <br/>
+                <div><img style="height: 100px; width: 100px;"
+                          src="{{ app.request.request.get('apply_signature-1') }}"><br/>
+                    Handtekening
+                </div>
+            </div>
+            <div class="column" style="width: 30%; margin-left: 4.5%">
+                <div>
+                    {{ contract.contractDate|date('d-m-Y') }}<br/>
+                    Datum
+                </div>
+                <br/>
+                <div style="margin-top: 65px">
+                    {{ app.request.clientIp }}<br/>
+                    Plaats
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<main style="width: 90%; margin-left: auto; margin-right: auto">
+</main>
+</body>

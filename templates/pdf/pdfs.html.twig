@@ -1,0 +1,9 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ServiceController!{% endblock %}
+
+{% block body %}
+    {% for contract in service.contracts %}
+        <p>{{ contract.customer.customerFirstname }} {{ contract.customer.customerLastname }} [{{ contract.contractDate|date('d-m-Y') }}] {% if (contract.hasPdf) %}<a target="_blank" href="{{ path('pdf_serve', {'contractOrdernr': contract.contractOrdernr}) }}">pdf</a>{% endif %}</p><br/>
+    {% endfor %}
+{% endblock %}
